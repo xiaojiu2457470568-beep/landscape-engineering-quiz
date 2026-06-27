@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#183f31" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="description" content="园林工程复习题在线答题与自动评分系统" />
+    <title>园林工程复习测试</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LANDSCAPE ENGINEERING</p>
+        <h1>园林工程复习测试</h1>
+      </div>
+      <div class="topbar-status">
+        <div>
+          <span>已答</span>
+          <strong id="answered-count">0 / 45</strong>
+        </div>
+        <div>
+          <span>用时</span>
+          <strong id="timer">00:00</strong>
+        </div>
+        <button class="icon-button" id="reset-button" type="button" title="清空全部答题记录" aria-label="清空全部答题记录">↻</button>
+      </div>
+    </header>
+
+    <nav class="mode-tabs" aria-label="练习模式">
+      <button class="mode-tab active" type="button" data-mode="objective">客观题考试</button>
+      <button class="mode-tab" type="button" data-mode="subjective">主观题练习</button>
+    </nav>
+
+    <main class="workspace">
+      <aside class="navigator" aria-label="题目导航">
+        <div class="navigator-heading">
+          <div>
+            <span class="section-kicker" id="nav-kicker">自动评分</span>
+            <h2 id="nav-title">题目导航</h2>
+          </div>
+          <span class="legend"><i></i>已作答</span>
+          <button
+            class="navigator-toggle"
+            id="navigator-toggle"
+            type="button"
+            aria-label="展开题目导航"
+            aria-expanded="false"
+            title="展开题目导航"
+          >⌄</button>
+        </div>
+        <div class="navigator-body" id="navigator-body">
+          <div class="question-grid" id="question-grid"></div>
+          <div class="navigator-footer">
+            <p id="score-note">45 道客观题等权换算为 100 分。</p>
+            <button class="primary-button" id="submit-button" type="button">交卷评分</button>
+          </div>
+        </div>
+      </aside>
+
+      <section class="question-stage" aria-live="polite">
+        <div id="question-view"></div>
+        <div class="stage-actions">
+          <button class="secondary-button" id="previous-button" type="button">上一题</button>
+          <button class="hint-button" id="hint-button" type="button">提示</button>
+          <button class="secondary-button" id="next-button" type="button">下一题</button>
+        </div>
+      </section>
+    </main>
+
+    <section class="result-panel" id="result-panel" hidden>
+      <div class="result-summary">
+        <div class="score-ring">
+          <strong id="score-value">0</strong>
+          <span>分</span>
+        </div>
+        <div>
+          <span class="section-kicker">本次成绩</span>
+          <h2 id="result-title">已完成评分</h2>
+          <p id="result-detail"></p>
+        </div>
+      </div>
+      <div class="result-metrics" id="result-metrics"></div>
+      <div class="result-actions">
+        <button class="secondary-button" id="review-wrong-button" type="button">查看错题</button>
+        <button class="primary-button" id="retry-button" type="button">重新答题</button>
+      </div>
+    </section>
+
+    <div class="dialog-backdrop" id="dialog-backdrop" hidden>
+      <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+        <h2 id="dialog-title">确认交卷</h2>
+        <p id="dialog-message"></p>
+        <div class="dialog-actions">
+          <button class="secondary-button" id="dialog-cancel" type="button">继续答题</button>
+          <button class="primary-button" id="dialog-confirm" type="button">确认交卷</button>
+        </div>
+      </section>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
